@@ -1,0 +1,35 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+
+    <div class="authBlock">
+      <h3>Iniciar sesión</h3>
+      <div class="formGroup">
+        <input type="text" class="formControl" placeholder="Email" #userName required>
+      </div>
+
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Clave" #userPassword required>
+      </div>
+      
+      <div class="formGroup">
+        <input type="button" class="btn btnPrimary" value="Iniciar sesión" (click)="authService.signIn(userName.value, userPassword.value)">
+      </div>
+
+      <div class="formGroup">
+        <span class="or"><span class="orInner"></span></span>
+      </div>
+      
+      <div class="formGroup">
+        <button type="button" class="btn googleBtn" (click)="authService.googleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Inicia sesión con Google
+        </button>
+      </div>
+
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">Recuperar clave?</span>
+      </div>
+    </div>
+
+  </div>
+</div>

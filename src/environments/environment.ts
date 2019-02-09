@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCe80Ap8Kcn2fdR7bc5ustPtSlxcB7nCO4",
-    authDomain: "mavericsrestaurants.firebaseapp.com",
-    databaseURL: "https://mavericsrestaurants.firebaseio.com",
-    projectId: "mavericsrestaurants",
-    storageBucket: "mavericsrestaurants.appspot.com",
-    messagingSenderId: "234460793613"
+    apiKey: "AIzaSyCzrWIxPsRfUI8zi5-NzyzD6ekvmQsuFMw",
+    authDomain: "mavericsrestaurants-base.firebaseapp.com",
+    databaseURL: "https://mavericsrestaurants-base.firebaseio.com",
+    projectId: "mavericsrestaurants-base",
+    storageBucket: "mavericsrestaurants-base.appspot.com",
+    messagingSenderId: "539370474968"
   }
 };
 
