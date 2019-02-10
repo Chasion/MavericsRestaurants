@@ -1,7 +1,7 @@
 import { User } from "./user";
 
 export interface Restaurant {
-    $key: string;
+    uid: string;
     name: string;
     photo: string;
     users: User[];

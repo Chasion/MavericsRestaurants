@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth/auth.service";
+import { AuthService } from "../../../../services/auth/auth.service";
 
 
 // TODO: Usar para crear usuarios o basarme en esto por lo menos, mm me sirve el servicio.....

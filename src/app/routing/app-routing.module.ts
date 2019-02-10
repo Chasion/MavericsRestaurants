@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignInComponent } from '../components/sign-in/sign-in.component';
-import { SignUpComponent } from '../components/sign-up/sign-up.component';
+import { SignInComponent } from '../components/accounts/login/sign-in/sign-in.component';
+import { SignUpComponent } from '../components/accounts/login/sign-up/sign-up.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
-import { ForgotPasswordComponent } from '../components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from '../components/verify-email/verify-email.component';
-import { UsersComponent } from '../components/users/users.component';
+import { ForgotPasswordComponent } from '../components/accounts/login/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from '../components/accounts/login/verify-email/verify-email.component';
+import { UsersComponent } from '../components/accounts/login/users/users.component';
 import { RestaurantsComponent } from '../components/restaurants/restaurants.component';
 import { AuthGuard } from "../guard/auth.guard";
 import { SecureInnerPagesGuard } from "../guard/secure-inner-pages.guard";

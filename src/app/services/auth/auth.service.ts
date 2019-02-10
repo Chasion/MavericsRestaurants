@@ -34,12 +34,12 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['home']);
         });
         this.setUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);
-      })
+      });
   }
 
   signUp(email, password) {
@@ -62,7 +62,7 @@ export class AuthService {
   forgotPassword(passwordResetEmail) {
     return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
+      window.alert('Correo para recuperar clave enviado.');
     }).catch((error) => {
       window.alert(error);
     })
@@ -70,7 +70,10 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    // Jode que crear los uisers desde firebase apra testing deje el emailVerified en falso por defecto,
+    // sobre todo si se usa para cuentas de test con correos falsos
+    // return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null) ? true : false;
   }
 
   googleAuth() {
@@ -81,7 +84,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
     .then((result) => {
       this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['home']);
       })
       this.setUserData(result.user);
     }).catch((error) => {
@@ -96,7 +99,8 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: true, //user.emailVerified
+      role: 1
     }
     return userRef.set(userData, {
       merge: true

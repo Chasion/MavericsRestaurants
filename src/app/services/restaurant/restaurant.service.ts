@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Restaurant } from 'src/app/models/restaurant';
-import { database } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RestaurantService {
 
-  constructor(private firestore: AngularFirestore) { }
+export class RestaurantService {
+  restaurant: Restaurant;
+  constructor(public afs: AngularFirestore) { }
 
   getRestaurants() {
-    return this.firestore.collection('restaurants').snapshotChanges();
+    return this.afs.collection('restaurants').snapshotChanges();
   }
 
   createRestaurant(restaurant: Restaurant) {
-    return this.firestore.collection('restaurants').add(restaurant);
+    return this.afs.collection('restaurants').add(restaurant);
   }
 
   updateRestaurant(restaurant: Restaurant) {
-    this.firestore.doc('restaurants/' + restaurant.$key).update(restaurant);
+    let data = Object.assign({}, restaurant);
+    delete data.uid;
+    this.afs.doc('restaurants/' + restaurant.uid).update(data);
   }
 
-  deleteRestaurant($key: string) {
-    this.firestore.doc('restaurants/' + $key).delete();
+  deleteRestaurant(uid: string) {
+    this.afs.doc('restaurants/' + uid).delete();
   }
 }

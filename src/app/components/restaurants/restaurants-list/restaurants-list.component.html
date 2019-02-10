@@ -1,3 +1,27 @@
-<p>
-  restaurants-list works!
-</p>
+<table class="table table-hover">
+  <thead>
+    <th>UID</th>
+    <th>Nombre</th>
+    <th>Photo</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of restaurantsList">
+      <td>{{restaurant.uid}}</td>
+      <td>{{restaurant.name}}</td>
+      <td>{{restaurant.photo}}</td>
+      <td>
+          <button 
+            class="btn btn-danger" 
+            (click)="onDelte(restaurant.uid)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+          <button 
+            class="btn btn-default" 
+            (click)="onUpdate(restaurant)">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
