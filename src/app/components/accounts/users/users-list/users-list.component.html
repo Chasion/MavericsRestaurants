@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+    <th>Email</th>
+    <th>Nombre</th>
+    <th>Rol</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of usersList">
+      <td>{{user.email}}</td>
+      <td>{{user.displayName}}</td>
+      <td>{{user.rol}}</td>
+      <td>
+          <button 
+            class="btn btn-danger" 
+            (click)="onDelte(user.uid)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+          <button 
+            class="btn btn-default" 
+            (click)="onUpdate(user)">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

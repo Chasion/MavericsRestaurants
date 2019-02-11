@@ -5,7 +5,7 @@ import { SignUpComponent } from '../components/accounts/login/sign-up/sign-up.co
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from '../components/accounts/login/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from '../components/accounts/login/verify-email/verify-email.component';
-import { UsersComponent } from '../components/accounts/login/users/users.component';
+import { UsersComponent } from '../components/accounts/users/users.component';
 import { RestaurantsComponent } from '../components/restaurants/restaurants.component';
 import { AuthGuard } from "../guard/auth.guard";
 import { SecureInnerPagesGuard } from "../guard/secure-inner-pages.guard";

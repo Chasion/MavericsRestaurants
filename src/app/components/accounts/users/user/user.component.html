@@ -1,0 +1,83 @@
+<h1 class="display-4">Crear</h1>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input 
+    type="hidden" 
+    name="uid"
+    #uid="ngModel"
+    [(ngModel)]="accountService.user.uid">
+  <div class="form-group" [hidden]="accountService.user.uid != null">
+    <input 
+      type="email" 
+      class="form-control"
+      name="email"
+      #email="ngModel"
+      [(ngModel)]="accountService.user.email"
+      placeholder="Email"
+      required>
+      <div 
+        *ngIf="email.invalid && email.touched" 
+        class="validation-error" >
+        Requerido
+      </div>
+  </div>
+
+  <div class="form-group" [hidden]="accountService.user.uid != null">
+    <input 
+      type="password" 
+      class="form-control"
+      name="clave"
+      #clave="ngModel"
+      [(ngModel)]="accountService.user.clave"
+      placeholder="Clave"
+      required>
+      <div 
+        *ngIf="clave.invalid && clave.touched && clave.length < 6" 
+        class="validation-error" >
+        Requerido (6 caracteres)
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input 
+      type="text" 
+      class="form-control"
+      name="displayName"
+      #displayName="ngModel"
+      [(ngModel)]="accountService.user.displayName"
+      placeholder="Nombre"
+      required>
+      <div 
+        *ngIf="displayName.invalid && displayName.touched" 
+        class="validation-error" >
+        Requerido
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input 
+      type="number"
+      pattern="^(0|1{1})"
+      min="0" 
+      max="1" 
+      class="form-control"
+      name="rol"
+      #rol="ngModel"
+      [(ngModel)]="accountService.user.rol"
+      placeholder="Rol"
+      required>
+      <div 
+        *ngIf="rol.invalid && rol.touched && rol.value > 0" 
+        class="validation-error" >
+        Valor 0 o 1
+      </div>
+  </div>
+
+  <div class="form-group">
+    <button 
+      type="submit" 
+      class="btn btn-lg btn-block btn-success"
+      [disabled]="form.invalid && accountService.user.uid == null">
+      <i class="fas fa-save"></i> Guardar
+    </button>
+  </div>
+</form>

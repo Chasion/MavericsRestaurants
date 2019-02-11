@@ -4,5 +4,5 @@ export interface Restaurant {
     uid: string;
     name: string;
     photo: string;
-    users: User[];
+    users: string;
 }

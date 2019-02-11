@@ -36,6 +36,18 @@
         Requerido
       </div>
   </div>
+
+  <div class="form-group">
+    <select 
+      name="users"
+      #users="ngModel"
+      (ngModel)="restaurantService.restaurant.users">
+        <option *ngFor="let user of usersList;" [value]="user.uid">
+          {{user.email}}
+        </option>
+    </select>
+  </div>
+
   <div class="form-group">
     <button 
       type="submit" 

@@ -17,7 +17,7 @@ import { SignUpComponent } from './components/accounts/login/sign-up/sign-up.com
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/accounts/login/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/accounts/login/verify-email/verify-email.component';
-import { UsersComponent } from './components/accounts/login/users/users.component';
+import { UsersComponent } from './components/accounts/users/users.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { RestaurantsListComponent } from './components/restaurants/restaurants-list/restaurants-list.component';
 import { RestaurantComponent } from './components/restaurants/restaurant/restaurant.component';
@@ -28,6 +28,8 @@ import { RestaurantService } from '../app/services/restaurant/restaurant.service
 
 // Config
 import { environment } from '../environments/environment';
+import { UserComponent } from './components/accounts/users/user/user.component';
+import { UsersListComponent } from './components/accounts/users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { environment } from '../environments/environment';
     UsersComponent,
     RestaurantsComponent,
     RestaurantsListComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    UserComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,

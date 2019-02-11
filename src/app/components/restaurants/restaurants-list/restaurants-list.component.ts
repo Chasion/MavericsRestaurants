@@ -20,8 +20,6 @@ export class RestaurantsListComponent implements OnInit {
     this.restaurantService.getRestaurants().subscribe(data => {
       this.restaurantsList = data.map(e => {
         return {
-          // Interezante los ...
-          uid: e.payload.doc.id,
           ...e.payload.doc.data()
         } as Restaurant;
       });

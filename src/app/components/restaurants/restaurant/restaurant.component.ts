@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../../../models/user';
+import { AccountsService } from 'src/app/services/accounts/accounts.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -9,14 +11,24 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
-
+  usersList: User[];
   constructor(
     private restaurantService: RestaurantService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private accountService: AccountsService
     ) { }
 
   ngOnInit() {
     this.resetForm();
+    this.accountService.getUsers().subscribe(data => {
+      this.usersList = data.map(e => {
+        return {
+          // Interezante los ...
+          uid: e.payload.doc.id,
+          ...e.payload.doc.data()
+        } as User;
+      });
+    });
   }
 
   resetForm(form?: NgForm) {

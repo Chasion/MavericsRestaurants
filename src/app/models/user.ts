@@ -4,5 +4,7 @@ export interface User {
    displayName: string;
    photoURL: string;
    emailVerified: boolean;
-   role: number;
+   rol: number;
+   clave?: string; // Validar que no sea tema de seguridad
+   state: boolean;
 }

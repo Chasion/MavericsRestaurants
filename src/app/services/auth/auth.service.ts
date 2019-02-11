@@ -4,6 +4,7 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -70,8 +71,6 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    // Jode que crear los uisers desde firebase apra testing deje el emailVerified en falso por defecto,
-    // sobre todo si se usa para cuentas de test con correos falsos
     // return (user !== null && user.emailVerified !== false) ? true : false;
     return (user !== null) ? true : false;
   }
@@ -92,16 +91,15 @@ export class AuthService {
     })
   }
 
+  // por ahora lo manejo acá pero esto deberia ser parte
+  // del accountService y acá solo temas de autenticación
+  // si no se crean cuentas desde afuera esto no sirve de nada
   setUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: true, //user.emailVerified
-      role: 1
+    const userData = {
+      email: user.email
     }
+
     return userRef.set(userData, {
       merge: true
     });
